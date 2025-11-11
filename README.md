@@ -16,7 +16,7 @@ Deepfakes can replicate facial features accurately but struggle to mimic involun
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](architecture_diagram.png)
+<img width="948" height="633" alt="image" src="https://github.com/user-attachments/assets/5afca992-14d2-4a37-b556-97974b8e2728" />
 
 ### Model Components
 
@@ -32,10 +32,10 @@ Deepfakes can replicate facial features accurately but struggle to mimic involun
 Input: RGB Images (B×3×H×W) + AU Features (B×n)
 
 1. X_img ← ResNet18(I)                  // 512-dim image features
-2. X_au ← ReLU(W_au · A + b_au)        // 128-dim AU features
-3. X_fused ← Concat(X_img, X_au)       // 640-dim fusion
-4. H ← Bi-LSTM(X_fused)                // Bi-directional processing
-5. P ← W_cls · H[:,-1,:] + b_cls       // Classification logits
+2. X_au ← ReLU(W_au · A + b_au)         // 128-dim AU features
+3. X_fused ← Concat(X_img, X_au)        // 640-dim fusion
+4. H ← Bi-LSTM(X_fused)                 // Bi-directional processing
+5. P ← W_cls · H[:,-1,:] + b_cls        // Classification logits
 6. Loss ← CrossEntropy(P, Y)            // Training loss
 
 Output: Real vs Fake (with confidence score)
